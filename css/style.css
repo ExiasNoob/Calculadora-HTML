@@ -1,0 +1,46 @@
+/* CSS global */
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: sans-serif;
+  font-size: 1.5rem;
+}
+
+header, footer {
+  background-color: gray;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+/* Contentor Principal */
+.main-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+section { background-color: white; flex: 1; padding: 20px; }
+aside   { background-color: lightcoral; padding: 20px; }
+nav     { background-color: lightblue; padding: 20px; }
+
+/* Reordenamento Mobile */
+section { order: 1; }
+aside   { order: 2; }
+nav     { order: 3; }
+
+/* Layout Desktop */
+@media (min-width: 769px) {
+  .main-container {
+    flex-direction: row;
+  }
+
+  nav, aside {
+    width: 150px;
+  }
+
+  nav     { order: 1; text-align: left; }
+  section { order: 2; text-align: left; }
+  aside   { order: 3; text-align: left; }
+}
