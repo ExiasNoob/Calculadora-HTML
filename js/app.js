@@ -64,7 +64,11 @@ class Calculadora {
     this.previousOperator = '';
   }
 
-  obterVisor() {
-    return this.currentOperator;
+  obtainVisor() {
+    return {
+      retPrevOpp: this.previousOperator,
+      retMathOpp: this.mathopp,
+      retCurrOpp: this.currentOperator
+    };
   }
 }
