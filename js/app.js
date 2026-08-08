@@ -72,6 +72,14 @@ class Calculadora {
     return this.currentOperator;
   }
 
+  obtainVisor() {
+    return {
+      retPrevOpp: this.previousOperator,
+      retMathOpp: this.mathopp,
+      retCurrOpp: this.currentOperator
+    };
+  }
+
   loadHistory() {
     try {
       const salvo = localStorage.getItem('calculadoraHistorico');
