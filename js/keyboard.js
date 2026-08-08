@@ -1,29 +1,25 @@
-class KeyboardInput {
-  constructor(calculatorInstance) {
-    this.calculator = calculatorInstance
-    this._initListener();
+document.addEventListener('keydown', (event) => {
+  const tecla = event.key;
+
+  if (/^[0-9]$/.test(tecla) || tecla === '.') {
+    calculadora.addDigit(tecla);
+    updateDisplay();
+    return;
   }
 
-  _initListener() {
-    document.addEventListener('keydown', (event) => {
-      const keyinput = event.key;
-
-      if (!isNaN(keyinput) || keyinput === '.') {
-        this.calculator.addDigit(keyinput);
-      }
-      else if (keyinput === '+' || keyinput === '-' || keyinput === '*' || keyinput === '/') {
-        this.calculator.chooseOperation(keyinput);
-      }
-      else if (keyinput === 'Enter' || keyinput === '=') {
-        event.preventDefault();
-        this.calculator.calculate();
-      }
-      else if (keyinput === 'Escape' || keyinput === 'c' || keyinput === 'C') {
-        this.calculator.clear();
-      }
-
-      const currstate = this.calculator.obtainVisor();
-      console.log(`Visor: ${currstate.retPrevOpp} ${currstate.retMathOpp || ''} ${currstate.retCurrOpp}`);
-    });
+  if (['+', '-', '*', '/'].includes(tecla)) {
+    calculadora.chooseOperation(tecla);
+    updateDisplay();
+    return;
   }
-}
+
+  if (tecla === 'Enter' || tecla === '=') {
+    event.preventDefault();
+    document.querySelector('#igual').click();
+    return;
+  }
+
+  if (tecla === 'Escape' || tecla.toLowerCase() === 'c') {
+    document.querySelector('#limpar').click();
+  }
+});

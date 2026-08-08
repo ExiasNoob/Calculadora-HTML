@@ -13,7 +13,7 @@ class Calculadora {
 
   // adds a number, or dot
   addDigit(digit) {
-    if (digit === '' && this.currentOperator.includes('.')) return;
+    if (digit === '.' && this.currentOperator.includes('.')) return;
 
     if (this.currentOperator === '0' && digit !== '.') {
       this.currentOperator = digit;
@@ -108,6 +108,10 @@ const emptyHistory = document.querySelector('#historico-vazio');
 function updateDisplay() {
   display.textContent = calculadora.getDisplay() || calculadora.previousOperator || '0';
 }
+
+// Mantém a calculadora disponível para o módulo de teclado carregado pelo HTML.
+window.calculadora = calculadora;
+window.updateDisplay = updateDisplay;
 
 function renderHistory() {
   history.replaceChildren();
