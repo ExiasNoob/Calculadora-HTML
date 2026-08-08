@@ -11,7 +11,22 @@
 }
 
 @media (min-width: 768px) {
+  .row > section,
+  .row > aside {
+    display: flex;
+  }
+
+  .row > section > .card,
+  .row > aside > .card {
+    width: 100%;
+  }
+
   .historico-card {
     height: 100%;
+  }
+
+  .historico-card .historico-lista {
+    flex: 1 1 0;
+    height: 0;
   }
 }
